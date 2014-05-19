@@ -8,7 +8,7 @@
 #
 
 gpgkey = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
-if platform?('centos') or platform?('redhat') or platform('amazon')
+if platform?('centos') or platform?('redhat') or platform?('amazon')
   include_recipe 'yum'
   yum_repository "mackerel" do
     description "mackerel-agent monitoring"
