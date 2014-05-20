@@ -9,6 +9,6 @@ version          '0.1.0'
 depends 'apt'
 depends 'yum'
 
-%w(debian ubuntu redhat centos).each do |os|
+%w(debian ubuntu redhat centos amazon).each do |os|
   supports os
 end
