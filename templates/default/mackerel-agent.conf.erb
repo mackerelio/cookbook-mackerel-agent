@@ -1,2 +1,5 @@
 apikey = "<%= node['mackerel-agent']['apikey'] %>"
 apibase = "<%= node['mackerel-agent']['apibase'] %>"
+<% if node['mackerel-agent']['service'] && node['mackerel-agent']['role']  %>
+roles = [ "<%= node['mackerel-agent']['service'] %>:<%= node['mackerel-agent']['role'] %>" ]
+<% end %>
