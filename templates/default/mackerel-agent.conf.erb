@@ -5,7 +5,7 @@ roles = [ "<%= node['mackerel-agent']['service'] %>:<%= node['mackerel-agent']['
 <% end %>
 
 <% if node['mackerel-agent']['user-metrics'] %>
-[sensu.checks.<% node['mackerel-agent']['user-metrics']['name'] %>]
-command = "<% node['mackerel-agent']['user-metrics']['command'] %>"
+[sensu.checks.<%= node['mackerel-agent']['user-metrics']['name'] %>]
+command = "<%= node['mackerel-agent']['user-metrics']['command'] %>"
 type = "metric"
 <% end %>
