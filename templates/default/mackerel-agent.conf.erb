@@ -9,3 +9,9 @@ roles = [ "<%= node['mackerel-agent']['service'] %>:<%= node['mackerel-agent']['
 command = "<%= node['mackerel-agent']['user-metrics']['command'] %>"
 type = "metric"
 <% end %>
+
+<% node['mackerel-agent']['user-metrics'].each do |metrics| %>
+[sensu.checks.<%= metrics.name %>]
+command = "<%= metrics.command %>"
+type = "metric"
+<% end %>
