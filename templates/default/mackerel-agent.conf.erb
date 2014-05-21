@@ -1,5 +1,11 @@
 apikey = "<%= node['mackerel-agent']['apikey'] %>"
 apibase = "<%= node['mackerel-agent']['apibase'] %>"
-<% if node['mackerel-agent']['service'] && node['mackerel-agent']['role']  %>
+<% if node['mackerel-agent']['service'] && node['mackerel-agent']['role'] %>
 roles = [ "<%= node['mackerel-agent']['service'] %>:<%= node['mackerel-agent']['role'] %>" ]
+<% end %>
+
+<% node['mackerel-agent']['user-metrics'].each do |metrics| %>
+[sensu.checks.<%= metrics.name %>]
+command = "<%= metrics.command %>"
+type = "metric"
 <% end %>
