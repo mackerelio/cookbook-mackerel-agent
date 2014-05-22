@@ -6,7 +6,6 @@ apibase = "<%= node['mackerel-agent']['apibase'] %>"
 <% if node['mackerel-agent']['roles'] %>
 roles = <%= node['mackerel-agent']['roles'].to_s %>
 <% end %>
-<% end %>
 
 <% if node['mackerel-agent']['user-metrics'] %>
 <% node['mackerel-agent']['user-metrics'].each do |metrics| %>
