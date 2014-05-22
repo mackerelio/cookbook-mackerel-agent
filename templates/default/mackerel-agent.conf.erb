@@ -2,11 +2,13 @@ apikey = "<%= node['mackerel-agent']['apikey'] %>"
 apibase = "<%= node['mackerel-agent']['apibase'] %>"
 <% if node['mackerel-agent']['service'] && node['mackerel-agent']['role'] %>
 <% end %>
+
 <% if node['mackerel-agent']['roles'] %>
 <% node['mackerel-agent']['roles'].each do |roles| %>
-roles = [ "<%= roles.service %>:<%= roles.role %>" ]
+roles = [ "<%= puts roles %>" ]
 <% end %>
 <% end %>
+
 <% if node['mackerel-agent']['user-metrics'] %>
 <% node['mackerel-agent']['user-metrics'].each do |metrics| %>
 [sensu.checks.<%= metrics.name %>]
