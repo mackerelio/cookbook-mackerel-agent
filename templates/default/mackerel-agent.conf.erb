@@ -4,7 +4,7 @@ apibase = "<%= node['mackerel-agent']['apibase'] %>"
 <% end %>
 
 <% if node['mackerel-agent']['roles'] %>
-roles = [ "<%= puts node['mackerel-agent']['roles'].to_s %>" ]
+roles = <%= puts node['mackerel-agent']['roles'].to_s %>
 <% end %>
 
 <% if node['mackerel-agent']['user-metrics'] %>
