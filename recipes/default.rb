@@ -36,6 +36,7 @@ template "/etc/mackerel-agent/mackerel-agent.conf" do
   owner "root"
   group "root"
   mode 0644
+  notifies :restart, 'service[mackerel-agent]'
 end
 
 service 'mackerel-agent' do
