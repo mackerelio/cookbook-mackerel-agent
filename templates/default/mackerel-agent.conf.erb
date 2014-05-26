@@ -1,7 +1,5 @@
 apikey = "<%= node['mackerel-agent']['apikey'] %>"
 apibase = "<%= node['mackerel-agent']['apibase'] %>"
-<% if node['mackerel-agent']['service'] && node['mackerel-agent']['role'] %>
-<% end %>
 
 <% if node['mackerel-agent']['roles'] %>
 roles = <%= node['mackerel-agent']['roles'].to_s %>
