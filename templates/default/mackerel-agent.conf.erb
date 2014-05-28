@@ -5,3 +5,6 @@ apibase = "<%= node['mackerel-agent']['apibase'] %>"
 <% if node['mackerel-agent']['pidfile'] %>
 pidfile = "<%= node['mackerel-agent']['pidfile'] %>"
 <% end %>
+<% if node['mackerel-agent']['root'] %>
+root = "<%= node['mackerel-agent']['root'] %>"
+<% end %>
