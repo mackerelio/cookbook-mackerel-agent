@@ -36,18 +36,11 @@ package 'mackerel-agent' do
   action :install
 end
 
-files "/etc/mackerel-agent/mackerel-agent.conf" do
+file "/etc/mackerel-agent/mackerel-agent.conf" do
   owner "root"
   group "root"
   mode 0644
-  content << TOML::Generator.new(node.default['mackerel-agent']).body
-end
-
-template "/etc/mackerel-agent/mackerel-agent.conf" do
-  source "mackerel-agent.conf.erb"
-  owner "root"
-  group "root"
-  mode 0644
+  content TOML::Generator.new(node['mackerel-agent']).body
 end
 
 service 'mackerel-agent' do
