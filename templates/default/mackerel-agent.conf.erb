@@ -2,4 +2,6 @@ apikey = "<%= node['mackerel-agent']['apikey'] %>"
 <% if node['mackerel-agent']['apibase'] %>
 apibase = "<%= node['mackerel-agent']['apibase'] %>"
 <% end %>
-
+<% if node['mackerel-agent']['pidfile'] %>
+pidfile = "<%= node['mackerel-agent']['pidfile'] %>"
+<% end %>
