@@ -25,8 +25,16 @@ Attributes
 The following attributes are set by default.
 
 ```ruby
-default['mackerel-agent']['apikey']  = nil
-default['mackerel-agent']['apibase'] = "https://mackerel.io"
+default['mackerel-agent']['apikey']  = "YOUR APIKEY"
+default['mackerel-agent']['pidfile'] = "/path/to/pidfile"
+default['mackerel-agent']['root'] = "/var/lib/mackerel-agent"
+default['mackerel-agent']['verbose'] = false
+default['mackerel-agent']['roles'] = ["My-Service:app", "Another-Service:db"]
+
+default['mackerel-agent']['plugin.metrics.vmstat'] = {
+  'command' => 'ruby /etc/sensu/plugins/system/vmstat-metrics.rb',
+  'type'    => 'metric'
+}
 ```
 
 Development

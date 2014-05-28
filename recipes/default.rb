@@ -7,6 +7,11 @@
 # Apache License, Version 2.0
 #
 
+chef_gem "toml" do
+  action :install
+end
+require "toml"
+
 gpgkey = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
 if platform?('centos') or platform?('redhat') or platform?('amazon')
   include_recipe 'yum'
@@ -31,11 +36,11 @@ package 'mackerel-agent' do
   action :install
 end
 
-template "/etc/mackerel-agent/mackerel-agent.conf" do
-  source "mackerel-agent.conf.erb"
+file "/etc/mackerel-agent/mackerel-agent.conf" do
   owner "root"
   group "root"
   mode 0644
+  content TOML::Generator.new(node['mackerel-agent']).body
 end
 
 service 'mackerel-agent' do
