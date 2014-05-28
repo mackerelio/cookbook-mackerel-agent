@@ -8,3 +8,6 @@ pidfile = "<%= node['mackerel-agent']['pidfile'] %>"
 <% if node['mackerel-agent']['root'] %>
 root = "<%= node['mackerel-agent']['root'] %>"
 <% end %>
+<% if node['mackerel-agent']['verbose'] %>
+verbose = <%= node['mackerel-agent']['verbose'].to_s %>
+<% end %>
