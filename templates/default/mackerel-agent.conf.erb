@@ -11,3 +11,6 @@ root = "<%= node['mackerel-agent']['root'] %>"
 <% if node['mackerel-agent']['verbose'] %>
 verbose = <%= node['mackerel-agent']['verbose'].to_s %>
 <% end %>
+<% if node['mackerel-agent']['roles'] %>
+roles = [ <%= node['mackerel-agent']['roles'].to_s %> ]
+<% end %>

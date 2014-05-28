@@ -22,5 +22,5 @@ vagrant up
 ## Target machine
 
 ```shell
-vagrnat up precise64
+vagrant up precise64
 ```
