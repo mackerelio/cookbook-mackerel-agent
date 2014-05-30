@@ -4,8 +4,8 @@ DEPENDENCIES
     metadata: true
 
 GRAPH
-  apt (2.3.10)
+  apt (2.4.0)
   mackerel-agent (0.1.0)
     apt (>= 0.0.0)
-    yum (>= 0.0.0)
-  yum (3.2.0)
+    yum (< 3.0.0)
+  yum (2.4.4)

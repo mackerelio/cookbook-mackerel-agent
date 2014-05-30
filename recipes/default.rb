@@ -13,12 +13,16 @@ end
 require "toml"
 
 gpgkey = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
+
 if platform?('centos') or platform?('redhat') or platform?('amazon')
   include_recipe 'yum'
+  yum_key "RPM-GPG-KEY-mackerel" do
+    url gpgkey
+    action :add
+  end
   yum_repository "mackerel" do
     description "mackerel-agent monitoring"
-    baseurl "http://yum.mackerel.io/centos/$basearch"
-    gpgkey gpgkey
+    url "http://yum.mackerel.io/centos/$basearch"
     action :add
   end
 elsif platform?('debian') or platform?('ubuntu')
