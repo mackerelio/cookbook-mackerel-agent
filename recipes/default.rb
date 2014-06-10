@@ -12,15 +12,19 @@ chef_gem "toml" do
 end
 require "toml"
 
-gpgkey = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
+gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
 
 if platform?('centos') or platform?('redhat') or platform?('amazon')
   include_recipe 'yum'
-  yum_key "RPM-GPG-KEY-mackerel" do
-    url gpgkey
-    action :add
+  yum_cookbook_ver = Gem::Version.new(run_context.cookbook_collection['yum'].version)
+  if yum_cookbook_ver < Gem::Version.new('3.0.0')
+    yum_key "RPM-GPG-KEY-mackerel" do
+      url gpgkey_url
+      action :add
+    end
   end
   yum_repository "mackerel" do
+    gpgkey gpgkey_url if yum_cookbook_ver >= Gem::Version.new('3.0.0')
     description "mackerel-agent monitoring"
     url "http://yum.mackerel.io/centos/$basearch"
     action :add
@@ -29,7 +33,7 @@ elsif platform?('debian') or platform?('ubuntu')
   include_recipe 'apt'
   apt_repository "mackerel" do
     uri 'http://apt.mackerel.io/debian/'
-    key gpgkey
+    key gpgkey_url
     distribution 'mackerel'
     components ['contrib']
     action :add
