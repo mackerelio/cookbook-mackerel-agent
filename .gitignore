@@ -1,5 +1,6 @@
 .mackerel-api-key
 .vagrant
+Berksfile.lock
 
 berks-cookbooks
 vendor/bundle
