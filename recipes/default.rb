@@ -7,9 +7,16 @@
 # Apache License, Version 2.0
 #
 
-chef_gem "toml" do
-  action :install
+whyrun_config = Chef::Config[:why_run]
+begin
+  Chef::Config[:why_run] = false
+  chef_gem "toml" do
+    action :install
+  end
+ensure
+  Chef::Config[:why_run] = whyrun_config
 end
+
 require "toml"
 
 gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
