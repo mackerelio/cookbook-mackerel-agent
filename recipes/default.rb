@@ -55,7 +55,7 @@ file "/etc/mackerel-agent/mackerel-agent.conf" do
   owner "root"
   group "root"
   mode 0644
-  content TOML::Generator.new(node['mackerel-agent']).body
+  content lazy { TOML::Generator.new(node['mackerel-agent']).body }
   notifies :restart, 'service[mackerel-agent]'
 end
 
