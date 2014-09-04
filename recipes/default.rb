@@ -40,6 +40,7 @@ elsif platform?('debian') or platform?('ubuntu')
   include_recipe 'apt'
   apt_repository "mackerel" do
     uri 'http://apt.mackerel.io/debian/'
+    options '--force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
     key gpgkey_url
     distribution 'mackerel'
     components ['contrib']
