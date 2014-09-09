@@ -48,8 +48,10 @@ elsif platform?('debian') or platform?('ubuntu')
   end
 end
 
+config = node['mackerel-agent'].delete('chef-config')
+
 package 'mackerel-agent' do
-  action :install
+  action config['package_action'].to_sym
 end
 
 file "/etc/mackerel-agent/mackerel-agent.conf" do
