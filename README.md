@@ -33,7 +33,6 @@ default['mackerel-agent']['roles'] = ["My-Service:app", "Another-Service:db"]
 
 default['mackerel-agent']['plugin.metrics.vmstat'] = {
   'command' => 'ruby /etc/sensu/plugins/system/vmstat-metrics.rb',
-  'type'    => 'metric'
 }
 ```
 
