@@ -20,7 +20,7 @@ end
 require "toml"
 
 gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
-package_optisons = ""
+package_options = ""
 
 if platform?('centos') or platform?('redhat') or platform?('amazon')
   include_recipe 'yum'
