@@ -51,7 +51,7 @@ elsif platform?('debian') or platform?('ubuntu')
 end
 
 package 'mackerel-agent' do
-  action :install
+  action node['mackerel-agent']['package-action'].to_sym
   options package_options
 end
 
