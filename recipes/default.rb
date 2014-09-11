@@ -20,6 +20,7 @@ end
 require "toml"
 
 gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
+package_optisons = ""
 
 if platform?('centos') or platform?('redhat') or platform?('amazon')
   include_recipe 'yum'
@@ -37,10 +38,11 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
     action :add
   end
 elsif platform?('debian') or platform?('ubuntu')
+  package_options = '--force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
+
   include_recipe 'apt'
   apt_repository "mackerel" do
     uri 'http://apt.mackerel.io/debian/'
-    options '--force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
     key gpgkey_url
     distribution 'mackerel'
     components ['contrib']
@@ -50,6 +52,7 @@ end
 
 package 'mackerel-agent' do
   action :install
+  options package_options
 end
 
 file "/etc/mackerel-agent/mackerel-agent.conf" do
