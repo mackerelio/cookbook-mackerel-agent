@@ -23,15 +23,16 @@ Attributes
 ==========
 
 The following attributes are set by default.
+(CAUTION! node attribute namespace has changed since version 1.0.)
 
 ```ruby
-default['mackerel-agent']['apikey']  = "YOUR APIKEY"
-default['mackerel-agent']['pidfile'] = "/path/to/pidfile"
-default['mackerel-agent']['root'] = "/var/lib/mackerel-agent"
-default['mackerel-agent']['verbose'] = false
-default['mackerel-agent']['roles'] = ["My-Service:app", "Another-Service:db"]
+default['mackerel-agent']['conf']['apikey']  = "YOUR APIKEY"
+default['mackerel-agent']['conf']['pidfile'] = "/path/to/pidfile"
+default['mackerel-agent']['conf']['root'] = "/var/lib/mackerel-agent"
+default['mackerel-agent']['conf']['verbose'] = false
+default['mackerel-agent']['conf']['roles'] = ["My-Service:app", "Another-Service:db"]
 
-default['mackerel-agent']['plugin.metrics.vmstat'] = {
+default['mackerel-agent']['conf']['plugin.metrics.vmstat'] = {
   'command' => 'ruby /etc/sensu/plugins/system/vmstat-metrics.rb',
 }
 ```
