@@ -1,11 +1,8 @@
+# Requirements
+
+- Vagrant 1.6
+
 # Setup
-
-```shell
-bundle install --path=vendor/bundle
-bundle exec berks vendor
-```
-
-# Try run with Vagrnat
 
 You should write your mackerel.io api key into ```.mackerel-api-key```.
 
@@ -13,14 +10,30 @@ You should write your mackerel.io api key into ```.mackerel-api-key```.
 XXXXXXXXXXXXXXXXXXX
 ```
 
-## All machines
+Prepare requirements and Launch VM and Provisioning with Chef.
 
 ```shell
-vagrant up
+bundle exec rake
+```
+
+## All machines
+
+- precise64
+- centos-6.5
+
+```shell
+bundle exec rake
 ```
 
 ## Target machine
 
 ```shell
-vagrant up precise64
+TARGET_HOSTS=precise64 bundle exec rake
 ```
+
+## Clean VM and Provisioning
+
+```shell
+bundle exec rake vagrnat:remake
+```
+
