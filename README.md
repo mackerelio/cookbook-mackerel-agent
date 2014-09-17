@@ -14,7 +14,11 @@ SYNPOSIS
 ========
 
 ```ruby
-node.default['mackerel-agent']['apikey'] = 'Your API KEY'
+node.default['mackerel-agent']['apikey'] = 'Your API KEY' # required
+node.default['mackerel-agent']['conf']['roles'] = ["My-Service:app", "Another-Service:db"] # optional
+node.default['mackerel-agent']['conf']['plugin.metrics.vmstat'] = { # optional
+  'command' => 'ruby /etc/sensu/plugins/system/vmstat-metrics.rb',
+}
 
 include_recipe 'mackerel-agent'
 ```
@@ -26,15 +30,13 @@ The following attributes are set by default.
 (CAUTION! node attribute namespace has changed since version 1.0.)
 
 ```ruby
-default['mackerel-agent']['conf']['apikey']  = "YOUR APIKEY"
-default['mackerel-agent']['conf']['pidfile'] = "/path/to/pidfile"
+default['mackerel-agent']['package-action'] = :upgrade
+
+default['mackerel-agent']['conf']['apikey']  = nil
+default['mackerel-agent']['conf']['pidfile'] = "/var/run/mackerel-agent.pid"
 default['mackerel-agent']['conf']['root'] = "/var/lib/mackerel-agent"
 default['mackerel-agent']['conf']['verbose'] = false
-default['mackerel-agent']['conf']['roles'] = ["My-Service:app", "Another-Service:db"]
-
-default['mackerel-agent']['conf']['plugin.metrics.vmstat'] = {
-  'command' => 'ruby /etc/sensu/plugins/system/vmstat-metrics.rb',
-}
+default['mackerel-agent']['conf']['roles'] = nil
 ```
 
 Development
