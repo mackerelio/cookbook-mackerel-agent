@@ -65,5 +65,5 @@ end
 
 service 'mackerel-agent' do
   supports :status => true, :restart => true
-  action [:enable, :start]
+  action [:enable, :restart]
 end
