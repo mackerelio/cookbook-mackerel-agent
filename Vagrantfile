@@ -27,7 +27,9 @@ Vagrant.configure("2") do |config|
         chef.add_recipe 'mackerel-agent'
         chef.json = {
           "mackerel-agent" => {
-            apikey: apikey,
+            "conf" => {
+              apikey: apikey,
+            }
           }
         }
       end
