@@ -1,0 +1,1 @@
+node_name 'mackerel'
