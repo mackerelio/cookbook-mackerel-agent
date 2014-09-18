@@ -7,7 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.0'
 
 depends 'apt'
-depends 'yum', '>= 2', '< 4'
+depends 'yum', '< 4.0'
 
 %w(debian ubuntu redhat centos amazon).each do |os|
   supports os
