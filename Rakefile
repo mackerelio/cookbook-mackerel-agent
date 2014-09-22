@@ -1,5 +1,4 @@
 require 'fileutils'
-require 'emeril/rake'
 
 ALL_MACHINES = 'precise64 centos-6.5'
 task :default => [:init, 'vagrant:make']
