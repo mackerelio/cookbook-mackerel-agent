@@ -8,7 +8,7 @@ Requirements
 ============
 
 - Chef 11 or higher
-- Ruby 2.0 or higher
+- Ruby 1.9
 
 SYNPOSIS
 ========

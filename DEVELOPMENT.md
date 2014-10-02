@@ -1,5 +1,6 @@
 # Requirements
 
+- Ruby 2.0 or higher
 - Vagrant 1.6
 
 # Setup
