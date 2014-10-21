@@ -53,6 +53,7 @@ end
 package 'mackerel-agent' do
   action node['mackerel-agent']['package-action'].to_sym
   options package_options
+  notifies :restart, 'service[mackerel-agent]'
 end
 
 file "/etc/mackerel-agent/mackerel-agent.conf" do
