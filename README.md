@@ -14,7 +14,7 @@ SYNPOSIS
 ========
 
 ```ruby
-node.default['mackerel-agent']['apikey'] = 'Your API KEY' # required
+node.default['mackerel-agent']['conf']['apikey'] = 'Your API KEY' # required
 node.default['mackerel-agent']['conf']['roles'] = ["My-Service:app", "Another-Service:db"] # optional
 node.default['mackerel-agent']['conf']['plugin.metrics.vmstat'] = { # optional
   'command' => 'ruby /etc/sensu/plugins/system/vmstat-metrics.rb',
