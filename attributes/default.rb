@@ -5,3 +5,4 @@ default['mackerel-agent']['conf']['verbose'] = nil
 default['mackerel-agent']['conf']['roles'] = nil    # eg. ["My-Service:app", "Another-Service:db"]
 
 default['mackerel-agent']['package-action'] = :upgrade
+default['mackerel-agent']['start_on_setup'] = true

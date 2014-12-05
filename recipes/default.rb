@@ -53,7 +53,9 @@ end
 package 'mackerel-agent' do
   action node['mackerel-agent']['package-action'].to_sym
   options package_options
-  notifies :restart, 'service[mackerel-agent]'
+  if node['mackerel-agent']['start_on_setup']
+    notifies :restart, 'service[mackerel-agent]'
+  end
 end
 
 file "/etc/mackerel-agent/mackerel-agent.conf" do
@@ -61,10 +63,16 @@ file "/etc/mackerel-agent/mackerel-agent.conf" do
   group "root"
   mode 0644
   content lazy { TOML::Generator.new(node['mackerel-agent']['conf']).body }
-  notifies :restart, 'service[mackerel-agent]'
+  if node['mackerel-agent']['start_on_setup']
+    notifies :restart, 'service[mackerel-agent]'
+  end
 end
 
 service 'mackerel-agent' do
   supports :status => true, :restart => true
-  action [:enable, :start]
+  if node['mackerel-agent']['start_on_setup']
+    action [:enable, :start]
+  else
+    action :enable
+  end
 end
