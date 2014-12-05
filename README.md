@@ -39,6 +39,12 @@ default['mackerel-agent']['conf']['verbose'] = false
 default['mackerel-agent']['conf']['roles'] = nil
 ```
 
+### Not to start mackerel-agent when you create a static image (like AMI)
+
+```ruby
+default['mackerel-agent']['start_on_setup'] = false
+```
+
 Development
 ===========
 
