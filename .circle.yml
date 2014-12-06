@@ -1,0 +1,13 @@
+machine:
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - bundle install --path vendor/bundle
+  cache_directories:
+    - "docker"
+
+test:
+  post:
+    - bundle exec thor docker
