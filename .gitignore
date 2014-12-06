@@ -5,3 +5,4 @@ Berksfile.lock
 berks-cookbooks
 vendor/bundle
 nodes
+docker/*/cookbooks
