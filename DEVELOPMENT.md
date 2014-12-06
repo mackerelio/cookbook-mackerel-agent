@@ -1,3 +1,6 @@
+Vagrant
+=======
+
 # Requirements
 
 - Ruby 2.0 or higher
@@ -5,9 +8,9 @@
 
 # Setup
 
-You should write your mackerel.io api key into ```.mackerel-api-key```.
+You should write your mackerel.io api key into `.mackerel-api-key`.
 
-```.mackerel-api-key
+```
 XXXXXXXXXXXXXXXXXXX
 ```
 
@@ -38,3 +41,15 @@ TARGET_HOSTS=precise64 bundle exec rake
 bundle exec rake vagrnat:remake
 ```
 
+Docker
+======
+
+## Requirements
+
+- Docker 1.0
+
+## build docker image and run serverspec
+
+```shell
+bundle exec thor docker
+```
