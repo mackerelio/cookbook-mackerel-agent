@@ -58,6 +58,12 @@ package 'mackerel-agent' do
   end
 end
 
+if node['mackerel-agent']['plugins']
+  package "mackerel-agent-plugins" do
+    action :install
+  end
+end
+
 file "/etc/mackerel-agent/mackerel-agent.conf" do
   owner "root"
   group "root"
