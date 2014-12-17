@@ -23,6 +23,7 @@ node.default['mackerel-agent']['conf']['plugin.metrics.vmstat'] = { # optional
 }
 
 include_recipe 'mackerel-agent'
+include_recipe 'mackerel-agent::plugins' # Option for installation of mackerel-agent-plugins package
 ```
 
 Attributes
@@ -39,7 +40,6 @@ default['mackerel-agent']['conf']['pidfile'] = "/var/run/mackerel-agent.pid"
 default['mackerel-agent']['conf']['root'] = "/var/lib/mackerel-agent"
 default['mackerel-agent']['conf']['verbose'] = false
 default['mackerel-agent']['conf']['roles'] = nil
-default['mackerel-agent']['plugins'] = false
 ```
 
 ### Not to start mackerel-agent when you create a static image (like AMI)
