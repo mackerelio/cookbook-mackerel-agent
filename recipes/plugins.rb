@@ -8,5 +8,5 @@
 #
 
 package "mackerel-agent-plugins" do
-  action :install
+  action node['mackerel-agent']['plugins']['package-action'].to_sym
 end
