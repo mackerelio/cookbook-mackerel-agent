@@ -32,10 +32,12 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
       action :add
     end
   end
+  repo_url = "http://yum.mackerel.io/centos/$basearch"
+  repo_url = "http://yum.mackerel.io/amznlinux/$releasever/$basearch" if platform?('amazon')
   yum_repository "mackerel" do
     gpgkey gpgkey_url if yum_cookbook_ver >= Gem::Version.new('3.0.0')
     description "mackerel-agent monitoring"
-    url "http://yum.mackerel.io/centos/$basearch"
+    url repo_url
     action :add
   end
 elsif platform?('debian') or platform?('ubuntu')
