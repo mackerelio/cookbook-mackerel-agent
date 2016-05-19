@@ -2,6 +2,10 @@ mackerel-agent Cookbook CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent cookbook.
 
+v1.2.1
+------
+- Support new mackerel-agent for Amazon Linux #24 (by spesnova)
+
 v1.2.0
 ------
 - Change default mackerel-agent-plugins action into :upgrade.
