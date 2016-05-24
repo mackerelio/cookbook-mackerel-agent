@@ -71,6 +71,31 @@ file "/etc/mackerel-agent/mackerel-agent.conf" do
   end
 end
 
+env_file_path = ''
+if platform?('centos') or platform?('redhat') or platform?('amazon')
+  env_file_path = '/etc/sysconfig/mackerel-agent'
+elsif platform?('debian') or platform?('ubuntu')
+  env_file_path = '/etc/default/mackerel-agent'
+end
+
+template env_file_path do
+  source 'env_file.erb'
+  owner 'root'
+  group 'root'
+  mode 0644
+  backup false
+  variables({
+    other_opts: node['mackerel-agent']['env_opts']['other_opts'],
+    auto_retirement: node['mackerel-agent']['env_opts']['auto_retirement'],
+    http_proxy: node['mackerel-agent']['env_opts']['http_proxy'],
+    mackerel_agent_plugin_meta: node['mackerel-agent']['env_opts']['mackerel_agent_plugin_meta'],
+  })
+  if node['mackerel-agent']['start_on_setup']
+    notifies :restart, 'service[mackerel-agent]'
+  end
+  action :create
+end
+
 service 'mackerel-agent' do
   supports :status => true, :restart => true
   if node['mackerel-agent']['start_on_setup']
