@@ -47,6 +47,17 @@ default['mackerel-agent']['conf']['roles'] = nil
 default['mackerel-agent']['start_on_setup'] = false
 ```
 
+### Configure environment variable options
+You can configure environment variable options via the following attributes.
+(These all attributes are set to `nil` by default)
+
+```
+default['mackerel-agent']['env_opts']['other_opts'] = nil
+default['mackerel-agent']['env_opts']['auto_retirement'] = nil
+default['mackerel-agent']['env_opts']['http_proxy'] = nil
+default['mackerel-agent']['env_opts']['mackerel_agent_plugin_meta'] = nil
+```
+
 Development
 ===========
 
