@@ -33,11 +33,16 @@ The following attributes are set by default.
 
 ```ruby
 default['mackerel-agent']['package-action'] = :upgrade
+```
 
+You can customize agent configuration via following attributes.
+(These attributes are set to `nil` by default and agent uses their default configuration)
+
+```ruby
 default['mackerel-agent']['conf']['apikey']  = nil
-default['mackerel-agent']['conf']['pidfile'] = "/var/run/mackerel-agent.pid"
-default['mackerel-agent']['conf']['root'] = "/var/lib/mackerel-agent"
-default['mackerel-agent']['conf']['verbose'] = false
+default['mackerel-agent']['conf']['pidfile'] = nil # in Linux, agent's default: "/var/run/mackerel-agent.pid"
+default['mackerel-agent']['conf']['root'] = nil # in Linux, agent's default: "/var/lib/mackerel-agent"
+default['mackerel-agent']['conf']['verbose'] = nil # agent's default: false
 default['mackerel-agent']['conf']['roles'] = nil
 ```
 
@@ -51,7 +56,7 @@ default['mackerel-agent']['start_on_setup'] = false
 You can configure environment variable options via the following attributes.
 (These all attributes are set to `nil` by default)
 
-```
+```ruby
 default['mackerel-agent']['env_opts']['other_opts'] = nil
 default['mackerel-agent']['env_opts']['auto_retirement'] = nil
 default['mackerel-agent']['env_opts']['http_proxy'] = nil
