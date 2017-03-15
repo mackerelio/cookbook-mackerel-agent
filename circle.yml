@@ -1,9 +1,12 @@
 machine:
-  services:
-    - docker
   ruby:
     version: 2.0.0
   timezone: Asia/Tokyo
+  post:
+    # Use newer version of docker
+    # https://discuss.circleci.com/t/support-docker-versions-newer-than-v1-9-1/7789/50
+    - curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-1.13.1.tgz && sudo tar --strip-components=1 -xvzf docker-1.13.1.tgz -C /usr/local/bin
+    - sudo container=yes docker daemon: { background: true }
 
 dependencies:
   cache_directories:
