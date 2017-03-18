@@ -8,5 +8,5 @@ cache:
 install:
   - travis_wait 30 bundle install --jobs=3 --retry=3 --deployment
 script:
-  - docker exec thor docker:build
+  - bundle exec thor docker:build
   - bundle exec thor docker:spec
