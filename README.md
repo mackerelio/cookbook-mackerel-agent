@@ -1,4 +1,4 @@
-cookbook-mackerel-agent ![Build Status](https://circleci.com/gh/mackerelio/cookbook-mackerel-agent.svg?style=shield&circle-token=d1d6814ee3a6add935eca5549de378d58f75a59f)
+cookbook-mackerel-agent [![Build Status](https://travis-ci.org/mackerelio/cookbook-mackerel-agent.svg?branch=master)](https://travis-ci.org/mackerelio/cookbook-mackerel-agent)
 =======================
 
 This cookbook provides recipes to install and configure mackerel-agent.
