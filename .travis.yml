@@ -1,5 +1,7 @@
 services:
 - docker
+env:
+- DIST=ubuntu-14.04
 language: ruby
 rvm:
 - 2.0
@@ -8,8 +10,7 @@ cache:
 install:
 - travis_wait 30 bundle install --jobs=3 --retry=3 --deployment
 script:
-- bundle exec thor docker:build
-- bundle exec thor docker:spec
+- bash travis-build.sh
 notifications:
   slack:
     secure: JJvnLuZ15PY4scgBaa863rKdFWalqQhaZVk5dtQWPbR0iYRG+8AW21ojJps9i1evUfFe1wT1qczbJjp/B/WE544lEga6qai7/7H/YO9HlL8zMZOjGFmjVvoEhl5+SRjOfW3KWZizTpsJ5fvh3aCxobSy+olzH6ZjIw1K781JYpQ=
