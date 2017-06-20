@@ -41,7 +41,7 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
     action :add
   end
 elsif platform?('debian') or platform?('ubuntu')
-  package_options = '--force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
+  package_options = '--yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
 
   include_recipe 'apt'
   apt_repository "mackerel" do
