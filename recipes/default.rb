@@ -21,19 +21,35 @@ end
 require "toml"
 
 gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
+gpgkey_url_v2 = 'https://mackerel.io/file/cert/GPG-KEY-mackerel-v2'
 package_options = ""
 
+platform_supports_v2_repository = value_for_platform(
+  ['centos', 'redhat'] => { '>= 7.0' => true },
+  'debian' => { '>= 8.0' => true },
+  'ubuntu' => { '>= 16.04' => true },
+  'default' => false,
+)
+
 if platform?('centos') or platform?('redhat') or platform?('amazon')
+  repo_url = "http://yum.mackerel.io/centos/$basearch"
+  yum_key_name = 'RPM-GPG-KEY-mackerel'
+  if platform?('amazon')
+    repo_url = "http://yum.mackerel.io/amznlinux/$releasever/$basearch"
+  elsif platform_supports_v2_repository and node[:kernel][:machine] === 'x86_64'
+    repo_url = "http://yum.mackerel.io/v2/$basearch"
+    gpgkey_url = gpgkey_url_v2
+    yum_key_name = 'RPM-GPG-KEY-mackerel-v2'
+  end
+
   include_recipe 'yum'
   yum_cookbook_ver = Gem::Version.new(run_context.cookbook_collection['yum'].version)
   if yum_cookbook_ver < Gem::Version.new('3.0.0')
-    yum_key "RPM-GPG-KEY-mackerel" do
+    yum_key yum_key_name do
       url gpgkey_url
       action :add
     end
   end
-  repo_url = "http://yum.mackerel.io/centos/$basearch"
-  repo_url = "http://yum.mackerel.io/amznlinux/$releasever/$basearch" if platform?('amazon')
   yum_repository "mackerel" do
     gpgkey gpgkey_url if yum_cookbook_ver >= Gem::Version.new('3.0.0')
     description "mackerel-agent monitoring"
@@ -42,10 +58,15 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
   end
 elsif platform?('debian') or platform?('ubuntu')
   package_options = '--yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
+  repo_url = 'http://apt.mackerel.io/debian/'
+  if platform_supports_v2_repository and node[:kernel][:machine] === 'x86_64'
+    repo_url = 'http://apt.mackerel.io/v2/'
+    gpgkey_url = gpgkey_url_v2
+  end
 
   include_recipe 'apt'
   apt_repository "mackerel" do
-    uri 'http://apt.mackerel.io/debian/'
+    uri repo_url
     key gpgkey_url
     distribution 'mackerel'
     components ['contrib']
@@ -98,6 +119,7 @@ end
 
 service 'mackerel-agent' do
   supports :status => true, :restart => true
+  provider Chef::Provider::Service::Systemd if platform_supports_v2_repository
   if node['mackerel-agent']['start_on_setup']
     action [:enable, :start]
   else
