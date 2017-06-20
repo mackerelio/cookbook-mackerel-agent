@@ -5,6 +5,7 @@ env:
 - DIST=ubuntu-16.04
 - DIST=debian-7
 - DIST=debian-8
+- DIST=centos-6
 language: ruby
 rvm:
 - 2.0

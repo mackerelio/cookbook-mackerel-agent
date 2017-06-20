@@ -2,7 +2,9 @@
 
 set -ex
 
-rm -fr docker/$DIST/cookbooks
+# Prevent from recursive copy of vendored cookbooks
+rm -fr docker/*/cookbooks
+
 bundle exec berks vendor docker/$DIST/cookbooks
 
 image=mackerelio/cookbook-mackerel-agent-$DIST
