@@ -84,12 +84,14 @@ template env_file_path do
   group 'root'
   mode 0644
   backup false
-  variables({
-    other_opts: node['mackerel-agent']['env_opts']['other_opts'],
-    auto_retirement: node['mackerel-agent']['env_opts']['auto_retirement'],
-    http_proxy: node['mackerel-agent']['env_opts']['http_proxy'],
-    mackerel_agent_plugin_meta: node['mackerel-agent']['env_opts']['mackerel_agent_plugin_meta'],
-  })
+  variables lazy {
+    {
+      other_opts: node['mackerel-agent']['env_opts']['other_opts'],
+      auto_retirement: node['mackerel-agent']['env_opts']['auto_retirement'],
+      http_proxy: node['mackerel-agent']['env_opts']['http_proxy'],
+      mackerel_agent_plugin_meta: node['mackerel-agent']['env_opts']['mackerel_agent_plugin_meta'],
+    }
+  }
   if node['mackerel-agent']['start_on_setup']
     notifies :restart, 'service[mackerel-agent]'
   end
