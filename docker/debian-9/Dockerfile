@@ -2,9 +2,9 @@ FROM debian:9
 
 # TODO use debian 9 chef package (not released yet)
 RUN apt-get update && apt-get install -y curl gnupg && \
-    curl -sL -o /tmp/chef_12.19.36-1_amd64.deb \
-        https://packages.chef.io/files/stable/chef/12.19.36/debian/8/chef_12.19.36-1_amd64.deb && \
-    dpkg -i /tmp/chef_12.19.36-1_amd64.deb
+    curl -sL -o /tmp/chef_13.1.31-1_amd64.deb \
+        https://packages.chef.io/files/stable/chef/13.1.31/debian/8/chef_13.1.31-1_amd64.deb && \
+    dpkg -i /tmp/chef_13.1.31-1_amd64.deb
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
 
