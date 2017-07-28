@@ -2,6 +2,14 @@ mackerel-agent Cookbook CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent cookbook.
 
+v1.3.0
+------
+- Add more platforms' test [#30](https://github.com/mackerelio/cookbook-mackerel-agent/pull/30) ([astj](https://github.com/astj))
+- Use TravisCI instead of CircleCI [#28](https://github.com/mackerelio/cookbook-mackerel-agent/pull/28) ([astj](https://github.com/astj))
+- update README about default['mackerel-agent']['conf'] [#27](https://github.com/mackerelio/cookbook-mackerel-agent/pull/27) ([astj](https://github.com/astj))
+- Support to configure environment variables opts [#25](https://github.com/mackerelio/cookbook-mackerel-agent/pull/25) ([spesnova](https://github.com/spesnova))
+- Fixed README.md [#26](https://github.com/mackerelio/cookbook-mackerel-agent/pull/26) ([kakakakakku](https://github.com/kakakakakku))
+
 v1.2.1
 ------
 - Support new mackerel-agent for Amazon Linux #24 (by spesnova)
