@@ -6,4 +6,4 @@ How to release new version
 1. `git commit -m "Bump version x.x.x"`
 1. `git tag vx.x.x`
 1. `git push origin master && git push --tags`
-1. `bundle exec berks --no-git --username mackerel --key /path/to/pem`. See https://supermarket.chef.io/cookbooks/mackerel-agent
+1. `bundle exec stove --no-git --username mackerel --key /path/to/pem`. See https://supermarket.chef.io/cookbooks/mackerel-agent
