@@ -2,6 +2,11 @@ mackerel-agent Cookbook CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent cookbook.
 
+v2.0.0
+------
+- append stove dependency to Gemfile and renew Gemfile.lock [#32](https://github.com/mackerelio/cookbook-mackerel-agent/pull/32) ([Songmu](https://github.com/Songmu))
+- Support v2 package repository [#29](https://github.com/mackerelio/cookbook-mackerel-agent/pull/29) ([astj](https://github.com/astj))
+
 v1.3.0
 ------
 - Add more platforms' test [#30](https://github.com/mackerelio/cookbook-mackerel-agent/pull/30) ([astj](https://github.com/astj))
