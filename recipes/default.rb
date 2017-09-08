@@ -24,19 +24,19 @@ gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
 gpgkey_url_v2 = 'https://mackerel.io/file/cert/GPG-KEY-mackerel-v2'
 package_options = ""
 
-platform_supports_v2_repository = value_for_platform(
+supports_v2_repository = value_for_platform(
   ['centos', 'redhat'] => { '>= 7.0' => true },
   'debian' => { '>= 8.0' => true },
   'ubuntu' => { '>= 16.04' => true },
   'default' => false,
-)
+) and node[:kernel][:machine] === 'x86_64'
 
 if platform?('centos') or platform?('redhat') or platform?('amazon')
   repo_url = "http://yum.mackerel.io/centos/$basearch"
   yum_key_name = 'RPM-GPG-KEY-mackerel'
   if platform?('amazon')
     repo_url = "http://yum.mackerel.io/amznlinux/$releasever/$basearch"
-  elsif platform_supports_v2_repository and node[:kernel][:machine] === 'x86_64'
+  elsif supports_v2_repository
     repo_url = "http://yum.mackerel.io/v2/$basearch"
     gpgkey_url = gpgkey_url_v2
     yum_key_name = 'RPM-GPG-KEY-mackerel-v2'
@@ -59,7 +59,7 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
 elsif platform?('debian') or platform?('ubuntu')
   package_options = '--yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
   repo_url = 'http://apt.mackerel.io/debian/'
-  if platform_supports_v2_repository and node[:kernel][:machine] === 'x86_64'
+  if supports_v2_repository
     repo_url = 'http://apt.mackerel.io/v2/'
     gpgkey_url = gpgkey_url_v2
   end
@@ -119,7 +119,7 @@ end
 
 service 'mackerel-agent' do
   supports :status => true, :restart => true
-  provider Chef::Provider::Service::Systemd if platform_supports_v2_repository
+  provider Chef::Provider::Service::Systemd if supports_v2_repository
   if node['mackerel-agent']['start_on_setup']
     action [:enable, :start]
   else
