@@ -5,12 +5,7 @@ describe package('mackerel-agent') do
 end
 
 describe service('mackerel-agent') do
-  it {
-    if os[:family] == 'debian' && os[:release] >= '9.0'
-      pending('It seems serverspec cannot detect service status on docker debian 9...')
-    end
-    should be_enabled
-  }
+  it { should be_enabled }
 end
 
 describe file('/etc/mackerel-agent/mackerel-agent.conf') do
