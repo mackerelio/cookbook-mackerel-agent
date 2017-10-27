@@ -10,6 +10,30 @@ Requirements
 - Chef 11 or higher
 - Ruby 1.9
 
+### For chef 11 users
+
+On chef 11, chef may throw error below:
+
+```
+================================================================================
+Recipe Compile Error in /var/chef/cache/cache/cookbooks/yum/resources/globalconfig.rb
+================================================================================
+
+NoMethodError
+-------------
+undefined method `property' for #<Class:0x00000003c9a088>
+```
+
+This is because `property` method in latest apt / yum cookbooks does not exist in chef 11.
+
+To fix this, specify apt cookbook and yum cookbook to use version __prior to 4.0__ in `Berksfile`.
+
+```ruby
+# Berksfile
+cookbook 'apt', '< 4.0'
+cookbook 'yum', '< 4.0'
+```
+
 SYNPOSIS
 ========
 
