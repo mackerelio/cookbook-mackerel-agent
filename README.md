@@ -10,9 +10,9 @@ Requirements
 - Chef 11 or higher
 - Ruby 1.9
 
-### For chef 11 users
+### For old chef (11.x ~ 12.4.x) users
 
-On chef 11, chef may throw error below:
+On old chef (11.x ~ 12.4.x), chef may throw error below:
 
 ```
 ================================================================================
@@ -24,9 +24,21 @@ NoMethodError
 undefined method `property' for #<Class:0x00000003c9a088>
 ```
 
-This is because `property` method in latest apt / yum cookbooks does not exist in chef 11.
+This is because `property` method in latest apt / yum cookbooks does not exist before chef 12.5.
 
-To fix this, specify apt cookbook and yum cookbook to use version __prior to 4.0__ in `Berksfile`.
+
+#### Chef 12.0.x ~ 12.4.x
+
+Use [compat_resource](https://github.com/chef-cookbooks/compat_resource) backports.
+
+```ruby
+# Berksfile
+cookbook 'compat_resource'
+```
+
+#### Chef 11.x
+
+Specify apt cookbook and yum cookbook to use version __prior to 4.0__ in `Berksfile`.
 
 ```ruby
 # Berksfile
