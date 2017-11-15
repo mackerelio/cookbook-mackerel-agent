@@ -8,7 +8,7 @@ Requirements
 ============
 
 - Chef 12.5 or higher
-- Ruby 1.9
+- Ruby 2.0
 
 ### Workarounds for old chef (11.x ~ 12.4.x)
 
