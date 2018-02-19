@@ -8,6 +8,8 @@ env:
 - DIST=debian-9
 - DIST=centos-6
 - DIST=centos-7
+- DIST=amazonlinux
+- DIST=amazonlinux-2
 language: ruby
 rvm:
 - 2.3
