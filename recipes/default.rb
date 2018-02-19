@@ -28,6 +28,7 @@ supports_v2_repository = value_for_platform(
   ['centos', 'redhat'] => { '>= 7.0' => true },
   'debian' => { '>= 8.0' => true },
   'ubuntu' => { '>= 16.04' => true },
+  'amazon' => { '~> 2.0' => true },
   'default' => false,
 ) and node[:kernel][:machine] === 'x86_64'
 
@@ -35,8 +36,14 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
   repo_url = "http://yum.mackerel.io/centos/$basearch"
   yum_key_name = 'RPM-GPG-KEY-mackerel'
   if platform?('amazon')
-    repo_url = "http://yum.mackerel.io/amznlinux/$releasever/$basearch"
-  elsif supports_v2_repository
+    if supports_v2_repository
+      repo_url = "http://yum.mackerel.io/amznlinux/v2/$releasever/$basearch"
+    else
+      repo_url = "http://yum.mackerel.io/amznlinux/$releasever/$basearch"
+    end
+  end
+
+  if supports_v2_repository
     repo_url = "http://yum.mackerel.io/v2/$basearch"
     gpgkey_url = gpgkey_url_v2
     yum_key_name = 'RPM-GPG-KEY-mackerel-v2'
