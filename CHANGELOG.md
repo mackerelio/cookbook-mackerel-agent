@@ -2,6 +2,14 @@ mackerel-agent Cookbook CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent cookbook.
 
+v3.0.0
+------
+Chef 11.0~12.4 and/or Ruby 1.9.x are no more supported.
+
+- Support Amazon Linux 2 [#37](https://github.com/mackerelio/cookbook-mackerel-agent/pull/37) ([hayajo](https://github.com/hayajo))
+- Remove yum cookbook version constraint (Drop Chef < 12.5 / Ruby 1.9 support) [#35](https://github.com/mackerelio/cookbook-mackerel-agent/pull/35) ([nonylene](https://github.com/nonylene))
+- Lazily evaluate variables passed to env file template [#34](https://github.com/mackerelio/cookbook-mackerel-agent/pull/34) ([astj](https://github.com/astj))
+
 v2.0.0
 ------
 - append stove dependency to Gemfile and renew Gemfile.lock [#32](https://github.com/mackerelio/cookbook-mackerel-agent/pull/32) ([Songmu](https://github.com/Songmu))
