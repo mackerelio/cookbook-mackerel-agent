@@ -20,7 +20,7 @@ end
 
 require "toml"
 
-gpgkey_url = 'https://mackerel.io/assets/files/GPG-KEY-mackerel'
+gpgkey_url = 'https://mackerel.io/file/cert/GPG-KEY-mackerel'
 gpgkey_url_v2 = 'https://mackerel.io/file/cert/GPG-KEY-mackerel-v2'
 package_options = ""
 
