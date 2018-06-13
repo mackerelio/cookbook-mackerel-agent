@@ -3,6 +3,7 @@ services:
 env:
 - DIST=ubuntu-14.04
 - DIST=ubuntu-16.04
+- DIST=ubuntu-18.04
 - DIST=debian-7
 - DIST=debian-8
 - DIST=debian-9
