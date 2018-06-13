@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-RUN apt-get update && apt-get install -y curl && \
+RUN apt-get update && apt-get install -y curl gpg && \
     curl -sL -o /tmp/chef_14.1.12-1_amd64.deb \
         https://packages.chef.io/files/stable/chef/14.1.12/ubuntu/18.04/chef_14.1.12-1_amd64.deb && \
     dpkg -i /tmp/chef_14.1.12-1_amd64.deb
