@@ -1,6 +1,6 @@
 FROM centos:6
 
-RUN rpm -i https://packages.chef.io/files/stable/chef/12.19.36/el/6/chef-12.19.36-1.el6.x86_64.rpm
+RUN rpm -i https://packages.chef.io/files/stable/chef/14.2.0/el/6/chef-14.2.0-1.el6.x86_64.rpm
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
 

@@ -1,9 +1,9 @@
 FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y curl gpg && \
-    curl -sL -o /tmp/chef_14.1.12-1_amd64.deb \
-        https://packages.chef.io/files/stable/chef/14.1.12/ubuntu/18.04/chef_14.1.12-1_amd64.deb && \
-    dpkg -i /tmp/chef_14.1.12-1_amd64.deb
+    curl -sL -o /tmp/chef.deb \
+        https://packages.chef.io/files/stable/chef/14.2.0/ubuntu/18.04/chef_14.2.0-1_amd64.deb && \
+    dpkg -i /tmp/chef.deb
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
 

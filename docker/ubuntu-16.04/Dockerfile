@@ -1,9 +1,9 @@
 FROM ubuntu:16.04
 
 RUN apt-get update && apt-get install -y curl && \
-    curl -sL -o /tmp/chef_12.19.36-1_amd64.deb \
-        https://packages.chef.io/files/stable/chef/12.19.36/ubuntu/16.04/chef_12.19.36-1_amd64.deb && \
-    dpkg -i /tmp/chef_12.19.36-1_amd64.deb
+    curl -sL -o /tmp/chef.deb \
+        https://packages.chef.io/files/stable/chef/14.2.0/ubuntu/16.04/chef_14.2.0-1_amd64.deb && \
+    dpkg -i /tmp/chef.deb
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
 
