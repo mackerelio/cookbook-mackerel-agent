@@ -8,6 +8,7 @@ Requirements
 ============
 
 - Chef 12.5 or higher
+    - For AmazonLinux 2, Chef 14.3.36 or higher is required.
 - Ruby 2.0
 
 ### Workarounds for old chef (11.x ~ 12.4.x)
