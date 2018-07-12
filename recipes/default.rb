@@ -36,15 +36,15 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
   repo_url = "http://yum.mackerel.io/centos/$basearch"
   yum_key_name = 'RPM-GPG-KEY-mackerel'
   if platform?('amazon')
-    if supports_v2_repository
-      repo_url = "http://yum.mackerel.io/amznlinux/v2/$releasever/$basearch"
-    else
-      repo_url = "http://yum.mackerel.io/amznlinux/$releasever/$basearch"
-    end
+    repo_url = "http://yum.mackerel.io/amznlinux/$releasever/$basearch"
   end
 
   if supports_v2_repository
-    repo_url = "http://yum.mackerel.io/v2/$basearch"
+    if platform?('amazon')
+      repo_url = "http://yum.mackerel.io/amznlinux/v2/$releasever/$basearch"
+    else
+      repo_url = "http://yum.mackerel.io/v2/$basearch"
+    end
     gpgkey_url = gpgkey_url_v2
     yum_key_name = 'RPM-GPG-KEY-mackerel-v2'
   end
