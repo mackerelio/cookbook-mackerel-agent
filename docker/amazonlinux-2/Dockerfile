@@ -1,6 +1,7 @@
 FROM amazonlinux:2
 
-RUN rpm -i https://packages.chef.io/files/stable/chef/14.3.37/el/7/chef-14.3.37-1.el7.x86_64.rpm
+ARG chefver
+RUN rpm -i https://packages.chef.io/files/stable/chef/${chefver}/el/7/chef-${chefver}-1.el7.x86_64.rpm
 RUN yum install -y systemd hostname
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
