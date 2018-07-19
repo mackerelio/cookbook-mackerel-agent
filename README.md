@@ -9,7 +9,7 @@ Requirements
 
 - Chef: 13.x, 14.x
     - For AmazonLinux 2, Chef 14.3.36 or higher is required.
-- Ruby 2.3
+- Ruby 2.3 or later
 
 SYNPOSIS
 ========
