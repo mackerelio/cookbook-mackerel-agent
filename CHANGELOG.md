@@ -2,6 +2,14 @@ mackerel-agent Cookbook CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent cookbook.
 
+v3.1.0
+------
+Chef >= 14.3.36 is necessary for Amazon Linux 2 GA.
+
+- Fix around AmazonLinux 2 [#41](https://github.com/mackerelio/cookbook-mackerel-agent/pull/41) ([astj](https://github.com/astj))
+- Add tests for Ubuntu 18.04 [#39](https://github.com/mackerelio/cookbook-mackerel-agent/pull/39) ([hayajo](https://github.com/hayajo))
+- New URL for GPG-KEY-mackerel [#38](https://github.com/mackerelio/cookbook-mackerel-agent/pull/38) ([astj](https://github.com/astj))
+
 v3.0.0
 ------
 Chef 11.0~12.4 and/or Ruby 1.9.x are no more supported.
