@@ -50,15 +50,8 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
   end
 
   include_recipe 'yum'
-  yum_cookbook_ver = Gem::Version.new(run_context.cookbook_collection['yum'].version)
-  if yum_cookbook_ver < Gem::Version.new('3.0.0')
-    yum_key yum_key_name do
-      url gpgkey_url
-      action :add
-    end
-  end
   yum_repository "mackerel" do
-    gpgkey gpgkey_url if yum_cookbook_ver >= Gem::Version.new('3.0.0')
+    gpgkey gpgkey_url
     description "mackerel-agent monitoring"
     url repo_url
     action :add
