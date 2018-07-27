@@ -7,45 +7,9 @@ mackerel-agent is a server monitoring agent for https://mackerel.io .
 Requirements
 ============
 
-- Chef 12.5 or higher
+- Chef: 13.x, 14.x
     - For AmazonLinux 2, Chef 14.3.36 or higher is required.
-- Ruby 2.0
-
-### Workarounds for old chef (11.x ~ 12.4.x)
-
-On old chef (11.x ~ 12.4.x), chef may throw error below:
-
-```
-================================================================================
-Recipe Compile Error in /var/chef/cache/cache/cookbooks/yum/resources/globalconfig.rb
-================================================================================
-
-NoMethodError
--------------
-undefined method `property' for #<Class:0x00000003c9a088>
-```
-
-This is because `property` method in latest apt / yum cookbooks does not exist before chef 12.5.
-
-
-#### Chef 12.0.x ~ 12.4.x
-
-Use [compat_resource](https://github.com/chef-cookbooks/compat_resource) backports.
-
-```ruby
-# Berksfile
-cookbook 'compat_resource'
-```
-
-#### Chef 11.x
-
-Specify apt cookbook and yum cookbook to use version __prior to 4.0__ in `Berksfile`.
-
-```ruby
-# Berksfile
-cookbook 'apt', '< 4.0'
-cookbook 'yum', '< 4.0'
-```
+- Ruby 2.3 or later
 
 SYNPOSIS
 ========

@@ -1,9 +1,10 @@
 FROM debian:8
 
+ARG chefver
 RUN apt-get update && apt-get install -y curl && \
-    curl -sL -o /tmp/chef_12.19.36-1_amd64.deb \
-        https://packages.chef.io/files/stable/chef/12.19.36/debian/8/chef_12.19.36-1_amd64.deb && \
-    dpkg -i /tmp/chef_12.19.36-1_amd64.deb
+    curl -sL -o /tmp/chef.deb \
+        https://packages.chef.io/files/stable/chef/${chefver}/debian/8/chef_${chefver}-1_amd64.deb && \
+    dpkg -i /tmp/chef.deb
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
 

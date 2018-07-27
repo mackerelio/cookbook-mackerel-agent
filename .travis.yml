@@ -1,16 +1,23 @@
 services:
 - docker
 env:
-- DIST=ubuntu-14.04
-- DIST=ubuntu-16.04
-- DIST=ubuntu-18.04
-- DIST=debian-7
-- DIST=debian-8
-- DIST=debian-9
-- DIST=centos-6
-- DIST=centos-7
-- DIST=amazonlinux
-- DIST=amazonlinux-2
+- DIST=ubuntu-14.04 CHEFVER=13.10.0
+- DIST=ubuntu-14.04 CHEFVER=14.3.37
+- DIST=ubuntu-16.04 CHEFVER=13.10.0
+- DIST=ubuntu-16.04 CHEFVER=14.3.37
+- DIST=ubuntu-18.04 CHEFVER=13.10.0
+- DIST=ubuntu-18.04 CHEFVER=14.3.37
+- DIST=debian-8 CHEFVER=13.10.0
+- DIST=debian-8 CHEFVER=14.3.37
+- DIST=debian-9 CHEFVER=13.10.0
+- DIST=debian-9 CHEFVER=14.3.37
+- DIST=centos-6 CHEFVER=13.10.0
+- DIST=centos-6 CHEFVER=14.3.37
+- DIST=centos-7 CHEFVER=13.10.0
+- DIST=centos-7 CHEFVER=14.3.37
+- DIST=amazonlinux CHEFVER=13.10.0
+- DIST=amazonlinux CHEFVER=14.3.37
+- DIST=amazonlinux-2 CHEFVER=14.3.37
 language: ruby
 rvm:
 - 2.3
