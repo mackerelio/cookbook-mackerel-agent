@@ -57,7 +57,7 @@ GEM
       excon (>= 0.38.0)
       json
     erubis (2.7.0)
-    excon (0.59.0)
+    excon (0.71.0)
     faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
@@ -166,4 +166,4 @@ DEPENDENCIES
   stove (~> 3.2.2)
 
 BUNDLED WITH
-   1.16.1
+   1.17.2
