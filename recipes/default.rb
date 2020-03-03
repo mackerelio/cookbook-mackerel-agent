@@ -58,19 +58,25 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
   end
 elsif platform?('debian') or platform?('ubuntu')
   package_options = '--yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
-  repo_url = 'http://apt.mackerel.io/debian/'
-  if supports_v2_repository
-    repo_url = 'http://apt.mackerel.io/v2/'
-    gpgkey_url = gpgkey_url_v2
-  end
-
   include_recipe 'apt'
-  apt_repository "mackerel" do
-    uri repo_url
-    key gpgkey_url
-    distribution 'mackerel'
-    components ['contrib']
-    action :add
+
+  if supports_v2_repository
+    apt_repository "mackerel" do
+      uri 'http://apt.mackerel.io/v2/'
+      key gpgkey_url_v2
+      distribution 'mackerel'
+      components ['contrib']
+      arch 'amd64'
+      action :add
+    end
+  else
+    apt_repository "mackerel" do
+      uri 'http://apt.mackerel.io/debian/'
+      key gpgkey_url
+      distribution 'mackerel'
+      components ['contrib']
+      action :add
+    end
   end
 end
 
