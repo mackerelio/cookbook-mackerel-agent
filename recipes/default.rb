@@ -66,7 +66,7 @@ elsif platform?('debian') or platform?('ubuntu')
       key gpgkey_url_v2
       distribution 'mackerel'
       components ['contrib']
-      arch 'amd64'
+      arch 'amd64,arm64'
       action :add
     end
   else
