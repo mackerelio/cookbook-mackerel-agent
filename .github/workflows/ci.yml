@@ -26,6 +26,7 @@ jobs:
         exclude:
           - dist: amazonlinux-2
             chef-version: 13.10.0
+      fail-fast: false
 
     steps:
     - uses: actions/checkout@v2
