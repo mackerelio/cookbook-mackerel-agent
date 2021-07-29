@@ -1,4 +1,4 @@
-cookbook-mackerel-agent [Build Status](https://github.com/mackerelio/cookbook-mackerel-agent/workflows/Test/badge.svg)](https://github.com/mackerelio/cookbook-mackerel-agent/actions?workflow=Test)
+cookbook-mackerel-agent [![Build Status](https://github.com/mackerelio/cookbook-mackerel-agent/workflows/Test/badge.svg)](https://github.com/mackerelio/cookbook-mackerel-agent/actions?workflow=Test)
 =======================
 
 This cookbook provides recipes to install and configure mackerel-agent.
