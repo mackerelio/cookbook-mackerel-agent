@@ -18,7 +18,6 @@ jobs:
           - ubuntu-16.04
           - debian-8
           - debian-9
-          - centos-6
           - centos-7
           - amazonlinux
           - amazonlinux-2
