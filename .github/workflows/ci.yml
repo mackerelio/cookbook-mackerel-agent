@@ -12,20 +12,18 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.6', '2.7']
+        ruby-version: ['2.7', '3.0']
         dist:
-          - ubuntu-16.04
           - ubuntu-18.04
           - debian-9
           - centos-7
-          - amazonlinux
           - amazonlinux-2
-        chef-version: ['15.17.4', '16.14.1']
-        exclude:
+        chef-version: ['15.17.4', '16.14.1', '17.3.48']
+        includes:
            - dist: amazonlinux
-             chef-version: 16.14.1
+             chef-version: 15.17.4
            - dist: ubuntu-16.04
-             chef-version: 16.14.1
+             chef-version: 15.17.4
       fail-fast: false
 
     steps:
