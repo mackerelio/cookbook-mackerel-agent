@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 ARG chefver
 RUN apt-get update && apt-get install -y curl gpg && \
-    curl -sL -o /tmp/chef.deb \
+    curl -fsL -o /tmp/chef.deb \
         https://packages.chef.io/files/stable/chef/${chefver}/ubuntu/18.04/chef_${chefver}-1_amd64.deb && \
     dpkg -i /tmp/chef.deb
 
