@@ -18,4 +18,4 @@ RUN echo '{"run_list":["recipe[mackerel-agent]"], "mackerel-agent": {"start_on_s
 
 COPY ./cookbooks /cookbooks
 
-RUN chef-client -j /var/chef/node/localhost.json
+RUN chef-client --chef-license accept-silent -j /var/chef/node/localhost.json
