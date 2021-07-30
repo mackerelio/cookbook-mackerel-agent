@@ -7,7 +7,7 @@ mackerel-agent is a server monitoring agent for https://mackerel.io .
 Requirements
 ============
 
-- Chef: 15.x, 16.x
+- Chef: 16.x
 - Ruby 2.6, 2.7
 
 SYNPOSIS
