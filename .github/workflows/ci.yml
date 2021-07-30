@@ -22,7 +22,7 @@ jobs:
           - centos-7
           - amazonlinux
           - amazonlinux-2
-        chef-version: ['15.17.5', '16.14.1']
+        chef-version: ['15.17.4']
       fail-fast: false
 
     steps:
