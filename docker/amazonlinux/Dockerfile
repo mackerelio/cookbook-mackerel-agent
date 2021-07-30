@@ -17,4 +17,4 @@ RUN echo '{"run_list":["recipe[mackerel-agent]"], "mackerel-agent": {"start_on_s
 COPY ./cookbooks /cookbooks
 
 # Hack for Chef 14. yum_package fails with EOFError without redirecting stdio...
-RUN chef-client -j /var/chef/node/localhost.json | cat
+RUN chef-client --chef-license accept-silent -j /var/chef/node/localhost.json | cat
