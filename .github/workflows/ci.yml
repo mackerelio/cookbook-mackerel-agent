@@ -19,7 +19,7 @@ jobs:
           - centos-7
           - amazonlinux-2
         chef-version: ['15.17.4', '16.14.1', '17.3.48']
-        includes:
+        include:
            - dist: amazonlinux
              chef-version: 15.17.4
            - dist: ubuntu-16.04
