@@ -21,6 +21,9 @@ jobs:
           - amazonlinux
           - amazonlinux-2
         chef-version: ['15.17.4', '16.14.1']
+        exclude:
+          - dist: ubuntu-16.04
+            chef-version: 16.14.1
       fail-fast: false
 
     steps:
