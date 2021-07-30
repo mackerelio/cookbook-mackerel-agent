@@ -22,8 +22,10 @@ jobs:
         include:
            - dist: amazonlinux
              chef-version: 15.17.4
+             ruby: 2.6
            - dist: ubuntu-16.04
              chef-version: 15.17.4
+             ruby: 2.6
       fail-fast: false
 
     steps:
