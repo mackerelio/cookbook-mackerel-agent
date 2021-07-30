@@ -16,7 +16,6 @@ jobs:
         dist:
           - ubuntu-16.04
           - ubuntu-18.04
-          - debian-8
           - debian-9
           - centos-7
           - amazonlinux
