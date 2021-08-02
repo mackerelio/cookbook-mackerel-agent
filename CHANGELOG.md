@@ -2,6 +2,20 @@ mackerel-agent Cookbook CHANGELOG
 =================================
 This file is used to list changes made in each version of the mackerel-agent cookbook.
 
+
+v4.0.0
+------
+Dropped support for older Chef and/or Ruby versions.
+
+- Update target versions [#51](https://github.com/mackerelio/cookbook-mackerel-agent/pull/51) ([astj](https://github.com/astj))
+- migrate from Travis CI to GitHub Actions workflow [#49](https://github.com/mackerelio/cookbook-mackerel-agent/pull/49) ([astj](https://github.com/astj))
+- add [arch=amd64,arm64] to v2 repo [#47](https://github.com/mackerelio/cookbook-mackerel-agent/pull/47) ([lufia](https://github.com/lufia))
+- Bump json from 2.1.0 to 2.3.1 [#46](https://github.com/mackerelio/cookbook-mackerel-agent/pull/46) ([dependabot](https://github.com/dependabot))
+- add [arch=amd64] to apt v2 repo to suppress warning [#45](https://github.com/mackerelio/cookbook-mackerel-agent/pull/45) ([astj](https://github.com/astj))
+- Bump rake from 12.0.0 to 12.3.3 [#44](https://github.com/mackerelio/cookbook-mackerel-agent/pull/44) ([dependabot](https://github.com/dependabot))
+- `bundle update excon` to avoid CVE-2019-16779 [#43](https://github.com/mackerelio/cookbook-mackerel-agent/pull/43) ([astj](https://github.com/astj))
+- Drop support for old Chef / Ruby / Debian [#42](https://github.com/mackerelio/cookbook-mackerel-agent/pull/42) ([astj](https://github.com/astj))
+
 v3.1.0
 ------
 Chef >= 14.3.36 is necessary for Amazon Linux 2 GA.
