@@ -1,7 +1,7 @@
-FROM rockylinux:9
+FROM rockylinux/rockylinux:10
 
 ARG chefver
-RUN rpm -i https://packages.chef.io/files/stable/chef/${chefver}/el/9/chef-${chefver}-1.el9.x86_64.rpm
+RUN rpm -i https://packages.chef.io/files/stable/chef/${chefver}/el/10/chef-${chefver}-1.el10.x86_64.rpm
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
 
