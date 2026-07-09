@@ -61,7 +61,6 @@ if platform?('centos') or platform?('redhat') or platform?('rocky') or platform?
   end
 elsif platform?('debian') or platform?('ubuntu')
   package_options = '--yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
-  include_recipe 'apt'
 
   if supports_v2_repository
     apt_repository "mackerel" do
