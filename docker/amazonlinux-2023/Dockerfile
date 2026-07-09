@@ -1,7 +1,8 @@
-FROM centos:7
+FROM amazonlinux:2023
 
 ARG chefver
-RUN rpm -i https://packages.chef.io/files/stable/chef/${chefver}/el/7/chef-${chefver}-1.el7.x86_64.rpm
+RUN rpm -i https://packages.chef.io/files/stable/chef/${chefver}/amazon/2023/chef-${chefver}-1.amazon2023.x86_64.rpm
+RUN dnf install -y systemd hostname
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
 

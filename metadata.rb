@@ -7,8 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '4.0.0'
 
 depends 'apt'
-depends 'yum'
 
-%w(debian ubuntu redhat centos amazon).each do |os|
+%w(debian ubuntu redhat centos rocky amazon).each do |os|
   supports os
 end

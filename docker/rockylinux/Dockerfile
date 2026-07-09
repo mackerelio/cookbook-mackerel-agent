@@ -1,8 +1,7 @@
-FROM amazonlinux:2
+FROM rockylinux:9
 
 ARG chefver
-RUN rpm -i https://packages.chef.io/files/stable/chef/${chefver}/el/7/chef-${chefver}-1.el7.x86_64.rpm
-RUN yum install -y systemd hostname
+RUN rpm -i https://packages.chef.io/files/stable/chef/${chefver}/el/9/chef-${chefver}-1.el9.x86_64.rpm
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
 

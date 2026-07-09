@@ -1,8 +1,8 @@
-FROM amazonlinux:1
+FROM debian:stable
 
 ARG chefver
-RUN rpm -i https://packages.chef.io/files/stable/chef/${chefver}/el/6/chef-${chefver}-1.el6.x86_64.rpm
-RUN yum install -y net-tools
+RUN apt-get update && apt-get install -y curl gnupg && \
+    curl -fsL https://omnitruck.chef.io/install.sh | bash -s -- -v ${chefver}
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
 
@@ -16,5 +16,4 @@ RUN echo '{"run_list":["recipe[mackerel-agent]"], "mackerel-agent": {"start_on_s
 
 COPY ./cookbooks /cookbooks
 
-# Hack for Chef 14. yum_package fails with EOFError without redirecting stdio...
-RUN chef-client --chef-license accept-silent -j /var/chef/node/localhost.json | cat
+RUN chef-client --chef-license accept-silent -j /var/chef/node/localhost.json
