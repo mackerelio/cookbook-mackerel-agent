@@ -1,7 +1,7 @@
 FROM debian:stable
 
 ARG chefver
-RUN apt-get update && apt-get install -y curl gnupg && \
+RUN apt-get update && apt-get install -y curl gnupg systemd systemd-sysv && \
     curl -fsL https://omnitruck.chef.io/install.sh | bash -s -- -v ${chefver}
 
 RUN install -d -m 755 /cookbooks /etc/chef /var/chef/node
@@ -16,4 +16,5 @@ RUN echo '{"run_list":["recipe[mackerel-agent]"], "mackerel-agent": {"start_on_s
 
 COPY ./cookbooks /cookbooks
 
-RUN chef-client --chef-license accept-silent -j /var/chef/node/localhost.json
+STOPSIGNAL SIGRTMIN+3
+CMD ["/sbin/init"]

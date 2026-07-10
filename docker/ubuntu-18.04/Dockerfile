@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 ARG chefver
-RUN apt-get update && apt-get install -y curl gpg && \
+RUN apt-get update && apt-get install -y curl gpg systemd systemd-sysv && \
     curl -fsL -o /tmp/chef.deb \
         https://packages.chef.io/files/stable/chef/${chefver}/ubuntu/18.04/chef_${chefver}-1_amd64.deb && \
     dpkg -i /tmp/chef.deb
@@ -18,4 +18,5 @@ RUN echo '{"run_list":["recipe[mackerel-agent]"], "mackerel-agent": {"start_on_s
 
 COPY ./cookbooks /cookbooks
 
-RUN chef-client --chef-license accept-silent -j /var/chef/node/localhost.json
+STOPSIGNAL SIGRTMIN+3
+CMD ["/sbin/init"]
