@@ -28,7 +28,7 @@ supports_v2_repository = value_for_platform(
   ['centos', 'redhat', 'rocky'] => { '>= 7.0' => true },
   'debian' => { '>= 8.0' => true },
   'ubuntu' => { '>= 16.04' => true },
-  'amazon' => { '~> 2.0' => true },
+  'amazon' => { '~> 2.0' => true, '>= 2023.0' => true },
   'default' => false,
 ) and node[:kernel][:machine] === 'x86_64'
 
