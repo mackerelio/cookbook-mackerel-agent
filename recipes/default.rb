@@ -25,23 +25,23 @@ gpgkey_url_v2 = 'https://mackerel.io/file/cert/GPG-KEY-mackerel-v2'
 package_options = ""
 
 supports_v2_repository = value_for_platform(
-  ['centos', 'redhat'] => { '>= 7.0' => true },
+  ['centos', 'redhat', 'rocky'] => { '>= 7.0' => true },
   'debian' => { '>= 8.0' => true },
   'ubuntu' => { '>= 16.04' => true },
   'amazon' => { '~> 2.0' => true },
   'default' => false,
 ) and node[:kernel][:machine] === 'x86_64'
 
-if platform?('centos') or platform?('redhat') or platform?('amazon')
+if platform?('centos') or platform?('redhat') or platform?('rocky') or platform?('amazon')
   repo_url = "http://yum.mackerel.io/centos/$basearch"
   yum_key_name = 'RPM-GPG-KEY-mackerel'
   if platform?('amazon')
-    repo_url = "http://yum.mackerel.io/amznlinux/$releasever/$basearch"
+    repo_url = "http://yum.mackerel.io/amznlinux/#{node['platform_version'].to_i}/$basearch"
   end
 
   if supports_v2_repository
     if platform?('amazon')
-      repo_url = "http://yum.mackerel.io/amznlinux/v2/$releasever/$basearch"
+      repo_url = "http://yum.mackerel.io/amznlinux/v2/#{node['platform_version'].to_i}/$basearch"
     else
       repo_url = "http://yum.mackerel.io/v2/$basearch"
     end
@@ -49,7 +49,6 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
     yum_key_name = 'RPM-GPG-KEY-mackerel-v2'
   end
 
-  include_recipe 'yum'
   yum_repository "mackerel" do
     gpgkey gpgkey_url
     description "mackerel-agent monitoring"
@@ -58,7 +57,6 @@ if platform?('centos') or platform?('redhat') or platform?('amazon')
   end
 elsif platform?('debian') or platform?('ubuntu')
   package_options = '--yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
-  include_recipe 'apt'
 
   if supports_v2_repository
     apt_repository "mackerel" do
@@ -99,7 +97,7 @@ file "/etc/mackerel-agent/mackerel-agent.conf" do
 end
 
 env_file_path = ''
-if platform?('centos') or platform?('redhat') or platform?('amazon')
+if platform?('centos') or platform?('redhat') or platform?('rocky') or platform?('amazon')
   env_file_path = '/etc/sysconfig/mackerel-agent'
 elsif platform?('debian') or platform?('ubuntu')
   env_file_path = '/etc/default/mackerel-agent'
