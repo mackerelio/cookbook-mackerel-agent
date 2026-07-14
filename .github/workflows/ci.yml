@@ -14,12 +14,11 @@ jobs:
       matrix:
         ruby-version: ['3.4', '4.0']
         dist:
-          - ubuntu-18.04
-          - debian-9
-          - centos-7
-          - amazonlinux
-          - amazonlinux-2
-        chef-version: ['16.14.1']
+          - ubuntu-26.04
+          - debian
+          - rockylinux
+          - amazonlinux-2023
+        chef-version: ['18.11.11']
       fail-fast: false
 
     steps:
