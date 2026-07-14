@@ -1,6 +1,6 @@
 require 'fileutils'
 
-ALL_MACHINES = 'precise64 centos-6.5'
+ALL_MACHINES = 'ubuntu-26.04 rockylinux'
 task :default => [:init, 'vagrant:make']
 
 task :init do

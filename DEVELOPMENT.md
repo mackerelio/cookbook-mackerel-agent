@@ -22,8 +22,8 @@ bundle exec rake
 
 ## All machines
 
-- precise64
-- centos-6.5
+- ubuntu-26.04
+- rockylinux
 
 ```shell
 bundle exec rake
@@ -32,7 +32,7 @@ bundle exec rake
 ## Target machine
 
 ```shell
-TARGET_HOSTS=precise64 bundle exec rake
+TARGET_HOSTS=ubuntu-26.04 bundle exec rake
 ```
 
 ## Clean VM and Provisioning
