@@ -45,7 +45,6 @@ if platform?('centos') || platform?('redhat') || platform?('rocky') || platform?
                  'http://yum.mackerel.io/v2/$basearch'
                end
     gpgkey_url = gpgkey_url_v2
-    'RPM-GPG-KEY-mackerel-v2'
   end
 
   yum_repository 'mackerel' do

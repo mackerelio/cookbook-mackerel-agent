@@ -24,7 +24,7 @@ describe file(env_file_path) do
   it { should be_file }
 end
 
-# default package is not install mackerel-agent-plugins
+# default package does not install mackerel-agent-plugins
 describe package('mackerel-agent-plugins') do
   it { should_not be_installed }
 end
