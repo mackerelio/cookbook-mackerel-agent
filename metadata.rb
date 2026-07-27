@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 name             'mackerel-agent'
 maintainer       'Hatena Co., Ltd.'
 maintainer_email 'mackerel-developers@hatena.ne.jp'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook Name:: mackerel-agent
 # Recipe:: default
@@ -32,7 +34,7 @@ supports_v2_repository = value_for_platform(
   'default' => false
 ) and node[:kernel][:machine] === 'x86_64'
 
-if platform?('centos') or platform?('redhat') or platform?('rocky') or platform?('amazon')
+if platform?('centos') || platform?('redhat') || platform?('rocky') || platform?('amazon')
   repo_url = 'http://yum.mackerel.io/centos/$basearch'
   repo_url = 'http://yum.mackerel.io/amznlinux/$releasever/$basearch' if platform?('amazon')
 
@@ -52,7 +54,7 @@ if platform?('centos') or platform?('redhat') or platform?('rocky') or platform?
     url repo_url
     action :add
   end
-elsif platform?('debian') or platform?('ubuntu')
+elsif platform?('debian') || platform?('ubuntu')
   package_options = '--yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"'
 
   if supports_v2_repository
@@ -90,9 +92,9 @@ file '/etc/mackerel-agent/mackerel-agent.conf' do
 end
 
 env_file_path = ''
-if platform?('centos') or platform?('redhat') or platform?('rocky') or platform?('amazon')
+if platform?('centos') || platform?('redhat') || platform?('rocky') || platform?('amazon')
   env_file_path = '/etc/sysconfig/mackerel-agent'
-elsif platform?('debian') or platform?('ubuntu')
+elsif platform?('debian') || platform?('ubuntu')
   env_file_path = '/etc/default/mackerel-agent'
 end
 

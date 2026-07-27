@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'fileutils'
 
 ALL_MACHINES = 'ubuntu-26.04 rockylinux'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 default['mackerel-agent']['conf']['apikey']  = nil
 default['mackerel-agent']['conf']['pidfile'] = nil
 default['mackerel-agent']['conf']['root'] = nil

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # vim:set ft=ruby:
 
 MACHINES = {
@@ -7,7 +9,7 @@ MACHINES = {
   'rockylinux' => {
     box: 'rockylinux/10'
   }
-}
+}.freeze
 
 apikey = File.read('.mackerel-api-key').chomp!
 
