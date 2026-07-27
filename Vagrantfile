@@ -1,11 +1,11 @@
 # vim:set ft=ruby:
 
 MACHINES = {
-  'precise64' => {
-    box: 'hashicorp/precise64'
+  'ubuntu-26.04' => {
+    box: 'bento/ubuntu-26.04'
   },
-  'centos-6.5' => {
-    box: 'chef/centos-6.5'
+  'rockylinux' => {
+    box: 'rockylinux/10'
   },
 }
 
