@@ -32,7 +32,7 @@ supports_v2_repository = value_for_platform(
   'ubuntu' => { '>= 16.04' => true },
   'amazon' => { '~> 2.0' => true, '>= 2023.0' => true },
   'default' => false
-) and node[:kernel][:machine] === 'x86_64'
+) and node[:kernel][:machine] == 'x86_64'
 
 if platform?('centos') || platform?('redhat') || platform?('rocky') || platform?('amazon')
   repo_url = 'http://yum.mackerel.io/centos/$basearch'

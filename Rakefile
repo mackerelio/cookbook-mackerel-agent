@@ -42,7 +42,7 @@ namespace :vagrant do
 
   def prepare_args!(args)
     args.with_defaults(
-      target: ENV['TARGET'],
+      target: ENV.fetch('TARGET', nil),
       machines: ENV.reject { |_k, v| v.empty? }.fetch('MACHINE', ALL_MACHINES).split(/[, ]+/)
     )
   end
