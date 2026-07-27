@@ -2,7 +2,7 @@ FROM ubuntu:26.04
 
 ARG chefver
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN apt-get update && apt-get install -y --no-install-recommends curl gnupg systemd systemd-sysv && \
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl gnupg systemd systemd-sysv && \
     curl -fsL https://omnitruck.chef.io/install.sh | bash -s -- -v "${chefver}" && \
     rm -rf /var/lib/apt/lists/*
 
