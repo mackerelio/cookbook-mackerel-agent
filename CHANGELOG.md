@@ -3,6 +3,13 @@ mackerel-agent Cookbook CHANGELOG
 This file is used to list changes made in each version of the mackerel-agent cookbook.
 
 
+v4.1.0
+------
+
+- Make some lint and rubocop pass [#56](https://github.com/mackerelio/cookbook-mackerel-agent/pull/56) ([ne-sachirou](https://github.com/ne-sachirou))
+- Update CI: Ruby/OS/GitHub Actions and drop apt/yum cookbook deps [#55](https://github.com/mackerelio/cookbook-mackerel-agent/pull/55) ([ne-sachirou](https://github.com/ne-sachirou))
+- Bump addressable from 2.5.2 to 2.8.1 [#52](https://github.com/mackerelio/cookbook-mackerel-agent/pull/52) ([dependabot](https://github.com/dependabot))
+
 v4.0.0
 ------
 Dropped support for older Chef and/or Ruby versions.
