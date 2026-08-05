@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook Name:: mackerel-agent
 # Recipe:: plugins
@@ -7,6 +9,6 @@
 # Apache License, Version 2.0
 #
 
-package "mackerel-agent-plugins" do
+package 'mackerel-agent-plugins' do
   action node['mackerel-agent']['plugins']['package-action'].to_sym
 end

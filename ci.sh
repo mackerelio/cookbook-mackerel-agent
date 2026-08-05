@@ -5,15 +5,15 @@ set -ex
 # Prevent from recursive copy of vendored cookbooks
 rm -fr docker/*/cookbooks
 
-bundle exec berks vendor docker/$DIST/cookbooks
+bundle exec berks vendor "docker/$DIST/cookbooks"
 
 image=mackerelio/cookbook-mackerel-agent-$DIST
-docker build -t $image --build-arg chefver=$CHEFVER docker/$DIST
+docker build -t "$image" --build-arg chefver="$CHEFVER" "docker/$DIST"
 
 # service[] resources need a real running systemd to verify enable/active
 # state, so run chef-client against a container with systemd as PID 1
 # instead of inside a `docker build` RUN layer.
-container=$(docker run -d --privileged --cgroupns=host -v /sys/fs/cgroup:/sys/fs/cgroup:rw $image)
+container=$(docker run -d --privileged --cgroupns=host -v /sys/fs/cgroup:/sys/fs/cgroup:rw "$image")
 trap 'docker rm -f "$container" >/dev/null' EXIT
 
 for _ in $(seq 1 30); do

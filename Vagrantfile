@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # vim:set ft=ruby:
 
 MACHINES = {
@@ -6,12 +8,12 @@ MACHINES = {
   },
   'rockylinux' => {
     box: 'rockylinux/10'
-  },
-}
+  }
+}.freeze
 
 apikey = File.read('.mackerel-api-key').chomp!
 
-Vagrant.configure("2") do |config|
+Vagrant.configure('2') do |config|
   config.omnibus.chef_version = :latest
 
   MACHINES.each do |name, machine|
@@ -20,15 +22,15 @@ Vagrant.configure("2") do |config|
     config.vm.define name do |config|
       config.vm.box = machine[:box]
 
-      config.vm.hostname = [ 'mackerel-agent', name, 'vagrant', %x(uname -n).chomp ].join('.')
+      config.vm.hostname = ['mackerel-agent', name, 'vagrant', `uname -n`.chomp].join('.')
 
       config.vm.provision 'chef_solo' do |chef|
         chef.cookbooks_path = ['./berks-cookbooks']
         chef.add_recipe 'mackerel-agent'
         chef.json = {
-          "mackerel-agent" => {
-            "conf" => {
-              apikey: apikey,
+          'mackerel-agent' => {
+            'conf' => {
+              apikey: apikey
             }
           }
         }

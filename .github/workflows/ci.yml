@@ -1,15 +1,19 @@
+---
 name: Test
 
-on:
+"on":
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
+
+permissions:
+  contents: read
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     strategy:
       matrix:
         ruby-version: ['3.4', '4.0']
@@ -22,14 +26,17 @@ jobs:
       fail-fast: false
 
     steps:
-    - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@6e5d382445ae5590b7449d8b3bc8cb1c2c27f617 # v1.317.0
-      with:
-        ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Run tests
-      run: bash ci.sh
-      env:
-        DIST: ${{ matrix.dist }}
-        CHEFVER: ${{ matrix.chef-version }}
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@6e5d382445ae5590b7449d8b3bc8cb1c2c27f617  # v1.317.0
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          # runs 'bundle install' and caches installed gems automatically
+          bundler-cache: true
+      - name: Run tests
+        run: bash ci.sh
+        env:
+          DIST: ${{ matrix.dist }}
+          CHEFVER: ${{ matrix.chef-version }}
